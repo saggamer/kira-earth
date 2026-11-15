@@ -1,0 +1,24 @@
+<template>
+<style>
+#root{position:absolute;inset:0;background:#fff;color:#17212b;font-family:Inter,sans-serif;overflow:hidden;}
+.brand{position:absolute;left:192px;top:218px;width:138px;height:138px;}
+.title{position:absolute;left:376px;top:208px;font-size:112px;font-weight:900;letter-spacing:-5px;}
+.tagline{position:absolute;left:192px;top:422px;font-size:62px;font-weight:700;letter-spacing:-2px;}
+.repo{position:absolute;left:192px;top:568px;font-size:34px;color:#47535e;}
+.disclosure{position:absolute;left:192px;top:746px;font-size:30px;color:#47535e;line-height:1.6;}
+.bar{position:absolute;left:0;bottom:0;width:1920px;height:32px;background:linear-gradient(90deg,#e2a52d 0%,#e2a52d 34%,#1594b8 34%,#1594b8 67%,#25845a 67%);}
+</style>
+<div id="root" data-composition-id="end" data-width="1920" data-height="1080">
+<div id="end-lockup" class="clip" data-start="0" data-duration="5" data-track-index="1">
+<img class="brand" src="assets/brand.svg" alt="Project orbit and trend mark" />
+<h1 class="title">KIRA Earth</h1><h2 class="tagline">See what's changing.</h2>
+<p class="repo">Explore the code · github.com/saggamer/kira-earth</p>
+<p class="disclosure">AI-generated voiceover · Kokoro-82M<br>Actual app footage · NASA POWER, MODIS &amp; GIBS</p><div class="bar"></div>
+</div></div>
+<script>
+const tl=gsap.timeline({paused:true});
+tl.fromTo('.brand',{scale:.85},{scale:1,duration:.4,ease:'power3.out'},0);
+tl.fromTo('.title',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:.45,ease:'power3.out'},.1);
+window.__timelines['end']=tl;
+</script>
+</template>

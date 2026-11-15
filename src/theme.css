@@ -1,0 +1,916 @@
+/* =====================================================================================
+   Trend Detective design system — loaded last, so it is the single source of truth for
+   type, surfaces and colour roles. Each tool owns an accent; panels, launchers, tabs and
+   primary buttons pick it up through --accent. Data colours (diverging blue/orange, status
+   green/amber) are separate and never reused as tool accents.
+   ===================================================================================== */
+:root {
+  --font-ui: "Inter", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* surfaces: neutral slate, not tinted, so tool accents read clearly */
+  --bg: #05070d;
+  --surface: rgba(12, 16, 25, 0.94);
+  --surface-2: rgba(20, 26, 39, 0.96);
+  --surface-hi: rgba(255, 255, 255, 0.04);
+  --line: rgba(148, 163, 184, 0.14);
+  --line-strong: rgba(148, 163, 184, 0.26);
+  --ink: #eef2f8;
+  --ink-2: #b4bfd0;
+  --ink-3: #7d8aa0;
+
+  /* tool accents (one per feature) */
+  --c-investigate: #22d3ee;
+  --c-questions: #2dd4bf;
+  --c-trends: #818cf8;
+  --c-ai: #c084fc;
+  --c-studio: #fbbf24;
+  --c-forecast: #38bdf8;
+  --c-compare: #fb7185;
+  --c-planetary: #34d399;
+  --c-map: #fb923c;
+  --c-tour: #a3e635;
+  --brand-grad: linear-gradient(120deg, #38bdf8 0%, #a78bfa 48%, #fbbf24 100%);
+
+  /* re-point the older per-module tokens at the neutral palette */
+  --ai-ink: var(--ink);
+  --ai-ink-2: var(--ink-2);
+  --ai-ink-3: var(--ink-3);
+  --ai-line: var(--line);
+  --glass-line: var(--line);
+  --signal: #38bdf8;
+}
+
+body,
+.earth-app {
+  font-family: var(--font-ui);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+  color: var(--ink);
+}
+.earth-app h1,
+.earth-app h2,
+.earth-app h3,
+.cs-header h2,
+.ai-header h2,
+.tour-text h3,
+.welcome h2,
+.hero h1 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+.earth-app strong,
+.earth-app b {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- surfaces ---------- */
+.earth-app .glass-panel,
+.glass-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 24px 60px -20px rgba(0, 0, 0, 0.7),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}
+
+/* ---------- accent assignment ---------- */
+.questions-launcher,
+.questions-popover { --accent: var(--c-questions); }
+.trends-launcher,
+.trends-workbench,
+.trends-opening { --accent: var(--c-trends); }
+.ai-launcher,
+.ai-panel { --accent: var(--c-ai); }
+.studio-launcher,
+.cs-panel { --accent: var(--c-studio); }
+.fc-nav,
+.fc-panel { --accent: var(--c-forecast); }
+.compare-nav,
+.swipe-panel { --accent: var(--c-compare); }
+.pc-card,
+.layer-pc { --accent: var(--c-planetary); }
+.tm-panel { --accent: var(--c-map); }
+.tour-nav,
+.tour-card { --accent: var(--c-tour); }
+.analysis-drawer { --accent: var(--c-investigate); }
+.key-menu,
+.key-nav { --accent: #94a3b8; }
+.layer-popover { --accent: var(--c-planetary); }
+
+/* ---------- left tool rail ---------- */
+.questions-launcher,
+.trends-launcher,
+.ai-launcher,
+.studio-launcher {
+  width: 66px;
+  padding: 9px 6px 8px !important;
+  gap: 6px !important;
+  border-radius: 14px !important;
+  color: var(--ink-2) !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s,
+    box-shadow 0.25s,
+    color 0.2s !important;
+}
+.questions-launcher svg,
+.trends-launcher svg,
+.ai-launcher svg,
+.studio-launcher svg {
+  box-sizing: content-box;
+  padding: 8px;
+  border-radius: 10px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.questions-launcher span,
+.trends-launcher span,
+.ai-launcher span,
+.studio-launcher span {
+  font-size: 11px !important;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.questions-launcher:hover,
+.trends-launcher:hover,
+.ai-launcher:hover,
+.studio-launcher:hover {
+  transform: translateX(2px);
+  color: var(--ink) !important;
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent) !important;
+}
+.questions-launcher.active,
+.ai-launcher.active,
+.studio-launcher.active {
+  color: var(--ink) !important;
+  border-color: color-mix(in srgb, var(--accent) 70%, transparent) !important;
+  box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--accent) 55%, transparent) !important;
+}
+.questions-launcher.active::before,
+.ai-launcher.active::before,
+.studio-launcher.active::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 22%;
+  bottom: 22%;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.questions-launcher { top: calc(46% - 30px) !important; }
+.trends-launcher { top: calc(46% + 50px) !important; }
+.ai-launcher { top: calc(46% + 130px) !important; }
+.studio-launcher { top: calc(46% + 210px) !important; }
+
+/* ---------- top bar ---------- */
+.view-navigation > button {
+  height: 40px;
+  border-radius: 11px !important;
+  border: 1px solid var(--line) !important;
+  background: var(--surface) !important;
+  color: var(--ink-2) !important;
+  font-size: 12px !important;
+  font-weight: 500;
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    box-shadow 0.25s,
+    transform 0.15s !important;
+}
+.view-navigation > button svg {
+  color: var(--accent, var(--ink-2));
+}
+.view-navigation > button:hover {
+  color: var(--ink) !important;
+  border-color: color-mix(in srgb, var(--accent, #94a3b8) 55%, transparent) !important;
+}
+.view-navigation > button.active,
+.view-navigation > button[aria-pressed="true"] {
+  color: var(--ink) !important;
+  border-color: color-mix(in srgb, var(--accent, #94a3b8) 80%, transparent) !important;
+  box-shadow: 0 8px 26px -10px color-mix(in srgb, var(--accent, #94a3b8) 60%, transparent);
+}
+.view-navigation > button:active {
+  transform: scale(0.97);
+}
+/* Tour is the call to action for judges: filled */
+.view-navigation > button.tour-nav {
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--c-tour) 24%, transparent), color-mix(in srgb, var(--c-forecast) 12%, transparent)),
+    #0c1019 !important;
+  border-color: color-mix(in srgb, var(--c-tour) 45%, transparent) !important;
+  color: var(--ink) !important;
+}
+
+/* search */
+.command-input {
+  border-radius: 14px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--line-strong) !important;
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.25s;
+}
+.command-input:focus-within {
+  border-color: color-mix(in srgb, var(--c-forecast) 70%, transparent) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-forecast) 16%, transparent);
+}
+.command-input input {
+  font-size: 14px !important;
+  color: var(--ink) !important;
+}
+
+/* ---------- brand ---------- */
+.earth-identity {
+  opacity: 1 !important;
+  gap: 11px !important;
+  color: var(--ink) !important;
+}
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 6px 18px rgba(167, 139, 250, 0.35));
+}
+.earth-identity > span.brand-text {
+  display: grid;
+  gap: 2px;
+  letter-spacing: 0 !important;
+  line-height: 1.1 !important;
+  text-align: left;
+}
+.brand-text b {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  background: var(--brand-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.earth-identity > span.brand-text > span {
+  display: block;
+  margin: 0 !important;
+  font-size: 10.5px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  color: var(--ink-3) !important;
+}
+
+/* ---------- panels pick up their accent ---------- */
+.ai-panel,
+.cs-panel,
+.fc-panel,
+.swipe-panel,
+.pc-card,
+.tm-panel,
+.analysis-drawer,
+.trends-workbench,
+.key-menu,
+.tour-card,
+.questions-popover,
+.layer-popover {
+  border-top: 2px solid color-mix(in srgb, var(--accent) 85%, transparent) !important;
+  background:
+    radial-gradient(120% 140px at 0% 0%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%),
+    var(--surface) !important;
+}
+.ai-header,
+.cs-header,
+.tm-header {
+  background: none !important;
+}
+.cs-mark,
+.ai-mark,
+.fc-mark,
+.swipe-mark,
+.pc-mark,
+.tm-mark,
+.tour-mark {
+  color: var(--accent) !important;
+  background: color-mix(in srgb, var(--accent) 14%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent) !important;
+  border-radius: 11px !important;
+}
+.ai-panel .trends-eyebrow,
+.cs-panel .trends-eyebrow,
+.fc-panel .trends-eyebrow,
+.swipe-panel .trends-eyebrow,
+.pc-card .trends-eyebrow,
+.key-menu .trends-eyebrow,
+.tm-eyebrow,
+.tour-q {
+  color: var(--accent) !important;
+  font-size: 10.5px !important;
+  letter-spacing: 0.12em !important;
+  font-weight: 600;
+}
+.cs-tabs button.on {
+  border-bottom-color: var(--accent) !important;
+}
+.cs-tabs button.on svg {
+  color: var(--accent);
+}
+.ai-activate,
+.tour-card footer button.primary,
+.welcome-actions button.primary {
+  background: var(--accent, var(--c-tour)) !important;
+  border-color: var(--accent, var(--c-tour)) !important;
+  color: #0a0d14 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 10px 28px -12px color-mix(in srgb, var(--accent, var(--c-tour)) 70%, transparent);
+}
+
+/* ---------- highlighted data ---------- */
+.cs-headline {
+  border: 1px solid color-mix(in srgb, var(--c-studio) 40%, transparent) !important;
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--c-studio) 16%, transparent), transparent 60%),
+    var(--surface-2) !important;
+}
+.cs-headline strong {
+  font-family: var(--font-display);
+  font-size: 19px !important;
+}
+.cs-chip.significant,
+.ai-skill.ok {
+  color: #86efac !important;
+  background: rgba(34, 197, 94, 0.12) !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+.cs-chip.withheld {
+  color: #fcd34d !important;
+  background: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+}
+.cs-chip.nominal {
+  color: #c4b5fd;
+  border-color: rgba(167, 139, 250, 0.35);
+}
+.cs-cross-card.confirmed {
+  border-color: rgba(34, 197, 94, 0.45) !important;
+  background: linear-gradient(140deg, rgba(34, 197, 94, 0.12), transparent 70%) !important;
+}
+.ai-sim-head strong,
+.cs-year,
+.pc-year {
+  font-family: var(--font-display);
+}
+.fc-model-card {
+  border-color: color-mix(in srgb, var(--c-forecast) 45%, transparent) !important;
+  background: linear-gradient(110deg, color-mix(in srgb, var(--c-forecast) 16%, transparent), transparent 70%) !important;
+}
+.fc-ai-chip {
+  background: var(--brand-grad) !important;
+}
+
+/* ---------- location dock ---------- */
+.target-dock {
+  border-radius: 18px !important;
+  background:
+    radial-gradient(140% 120% at 0% 0%, rgba(34, 211, 238, 0.1), transparent 60%),
+    var(--surface) !important;
+}
+.target-dock h1 {
+  font-family: var(--font-display) !important;
+  letter-spacing: -0.01em !important;
+}
+.target-indicator {
+  color: var(--c-investigate) !important;
+}
+.target-actions > button {
+  border-radius: 11px !important;
+}
+.target-actions > button:first-child {
+  background: color-mix(in srgb, var(--c-investigate) 16%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--c-investigate) 45%, transparent) !important;
+  color: var(--ink) !important;
+}
+
+/* ---------- home hero ---------- */
+.hero {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 8;
+  width: min(430px, 34vw);
+  pointer-events: auto;
+  animation: hero-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px 5px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  font-size: 11.5px;
+  color: var(--ink-2);
+}
+.hero-kicker i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.18);
+  animation: pulse 2s infinite;
+}
+.hero h1 {
+  margin: 16px 0 12px;
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.04;
+  font-weight: 700;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: normal;
+  background: var(--brand-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p {
+  margin: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.hero-questions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.hero-questions span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--ink);
+}
+.hero-questions span svg {
+  flex-shrink: 0;
+  padding: 5px;
+  box-sizing: content-box;
+  border-radius: 8px;
+  color: var(--q);
+  background: color-mix(in srgb, var(--q) 16%, transparent);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.hero-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  transition:
+    transform 0.15s,
+    box-shadow 0.25s,
+    border-color 0.2s;
+}
+.hero-actions button.primary {
+  border: 0;
+  color: #0a0d14;
+  background: var(--brand-grad);
+  box-shadow: 0 14px 34px -14px rgba(167, 139, 250, 0.8);
+}
+.hero-actions button:hover {
+  transform: translateY(-1px);
+}
+.hero-actions button:active {
+  transform: scale(0.98);
+}
+.hero-places small {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+.hero-places div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.hero-places button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background-color 0.2s;
+}
+.hero-places button i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dot);
+}
+.hero-places button:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--dot) 60%, transparent);
+  background: color-mix(in srgb, var(--dot) 10%, var(--surface));
+}
+
+/* data-source ribbon */
+.source-ribbon {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  translate: -50% 0;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px 6px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+  font-size: 11.5px;
+  color: var(--ink-3);
+  white-space: nowrap;
+  animation: hero-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+.source-ribbon b {
+  font-weight: 500;
+  color: var(--ink-3);
+  margin-right: 2px;
+}
+.source-ribbon span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: var(--ink-2);
+  background: var(--surface-hi);
+}
+.source-ribbon span i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dot);
+}
+
+/* ---------- tooltips / misc ---------- */
+.term::after {
+  font-family: var(--font-ui);
+  background: var(--surface-2) !important;
+  border-color: var(--line-strong) !important;
+}
+.earth-app .cesium-widget-credits {
+  font-size: 10px !important;
+}
+::selection {
+  background: rgba(167, 139, 250, 0.35);
+}
+.earth-app button:focus-visible,
+.earth-app a:focus-visible,
+.earth-app [tabindex]:focus-visible {
+  outline: 2px solid var(--accent, #38bdf8);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1180px) {
+  .hero {
+    width: min(380px, 40vw);
+  }
+  .hero h1 {
+    font-size: 30px;
+  }
+  .source-ribbon .opt {
+    display: none;
+  }
+}
+@media (max-width: 860px) {
+  .hero {
+    left: 16px;
+    right: 16px;
+    top: auto;
+    bottom: 70px;
+    translate: none;
+    width: auto;
+  }
+  .hero h1 {
+    font-size: 26px;
+    margin: 10px 0 8px;
+  }
+  .hero p {
+    font-size: 13.5px;
+    margin-bottom: 12px;
+  }
+  .hero-questions {
+    display: none;
+  }
+  .source-ribbon {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .questions-launcher,
+  .trends-launcher,
+  .ai-launcher,
+  .studio-launcher {
+    width: auto;
+    padding: 5px 10px 5px 5px !important;
+    border-radius: 10px !important;
+  }
+  .questions-launcher svg,
+  .trends-launcher svg,
+  .ai-launcher svg,
+  .studio-launcher svg {
+    padding: 5px;
+    border-radius: 7px;
+  }
+  .questions-launcher { top: 78px !important; }
+  .trends-launcher { top: 78px !important; }
+  .ai-launcher { top: 122px !important; }
+  .studio-launcher { top: 122px !important; }
+  .questions-launcher.active::before,
+  .ai-launcher.active::before,
+  .studio-launcher.active::before {
+    display: none;
+  }
+  .brand-text {
+    display: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .source-ribbon,
+  .hero-kicker i {
+    animation: none;
+  }
+}
+.hero-shade {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(820px, 62vw);
+  z-index: 7;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(5, 7, 13, 0.94) 0%, rgba(5, 7, 13, 0.82) 45%, rgba(5, 7, 13, 0) 100%);
+  animation: hero-in 0.8s ease-out both;
+}
+@media (max-width: 860px) {
+  .hero-shade {
+    inset: auto 0 0 0;
+    width: auto;
+    height: 70%;
+    background: linear-gradient(0deg, rgba(5, 7, 13, 0.95) 0%, rgba(5, 7, 13, 0.8) 55%, rgba(5, 7, 13, 0) 100%);
+  }
+}
+.earth-identity {
+  padding: 5px 14px 5px 5px !important;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+  transition: border-color 0.2s, box-shadow 0.25s !important;
+}
+.earth-identity:hover {
+  border-color: rgba(167, 139, 250, 0.5);
+  box-shadow: 0 10px 30px -14px rgba(167, 139, 250, 0.7);
+}
+@media (max-width: 760px) {
+  .earth-identity {
+    padding: 3px !important;
+    border-radius: 12px;
+  }
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
+}
+/* During a then-and-now comparison the selected-place card would label the wrong place. */
+.swiping .target-dock {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+/* "Explore this area" sits above the data ribbon on desktop; on phones the hero owns the bottom sheet. */
+.earth-app:has(.source-ribbon) .explore-view {
+  bottom: 70px !important;
+}
+@media (max-width: 860px) {
+  .earth-app:has(.hero) .explore-view {
+    display: none;
+  }
+}
+
+/* =====================================================================================
+   Layout grid (screens wider than 760 px). One margin, one content top, fixed lanes:
+     top bar  : brand · search (never reaches the buttons) ………… tool buttons
+     left lane: tool rail (x 24–90) · left panels from x 104
+     right lane: right panels and the investigation drawer, right 24
+     bottom   : location card centred, or beside an open left panel · globe controls bottom-right
+   ===================================================================================== */
+:root {
+  --edge: 24px;
+  --top: 92px;
+  --rail-w: 66px;
+  --lane: calc(var(--edge) + var(--rail-w) + 14px); /* 104px: where left panels start */
+}
+@media (min-width: 761px) {
+  /* top bar */
+  .earth-navigation {
+    left: var(--edge) !important;
+    right: auto !important;
+    top: 22px !important;
+    display: flex !important;
+    align-items: center;
+    gap: 14px !important;
+  }
+  .earth-navigation .command-search {
+    width: clamp(260px, 30vw, 440px);
+    grid-column: auto;
+  }
+  .view-navigation {
+    top: 27px !important;
+    right: var(--edge) !important;
+  }
+
+  /* tool rail directly under the brand, flush with the panel tops */
+  .questions-launcher { top: var(--top) !important; left: var(--edge) !important; }
+  .trends-launcher { top: calc(var(--top) + 84px) !important; left: var(--edge) !important; }
+  .ai-launcher { top: calc(var(--top) + 168px) !important; left: var(--edge) !important; }
+  .studio-launcher { top: calc(var(--top) + 252px) !important; left: var(--edge) !important; }
+
+  /* left lane panels */
+  .ai-panel,
+  .cs-panel {
+    left: var(--lane) !important;
+    top: var(--top) !important;
+    bottom: var(--edge) !important;
+  }
+  .questions-popover {
+    left: var(--lane) !important;
+    top: var(--top) !important;
+  }
+
+  /* right lane panels */
+  .swipe-panel,
+  .pc-card,
+  .tm-panel,
+  .analysis-drawer {
+    right: var(--edge) !important;
+    top: var(--top) !important;
+  }
+  .tm-panel,
+  .swipe-panel {
+    max-height: calc(100dvh - var(--top) - 96px);
+    overflow-y: auto;
+  }
+  .analysis-drawer {
+    bottom: var(--edge) !important;
+  }
+
+  /* globe controls: bottom-right corner, clear of every panel */
+  .earth-app .globe-controls {
+    top: auto !important;
+    bottom: 52px !important;
+    right: var(--edge) !important;
+    transform: none !important;
+    gap: 8px !important;
+  }
+
+  /* location card: centred, or beside an open left-lane panel */
+  .target-dock {
+    bottom: var(--edge) !important;
+    transition: left 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+  .earth-app:has(.cs-panel) .target-dock,
+  .earth-app:has(.ai-panel) .target-dock {
+    transform: none !important;
+    max-width: calc(100% - var(--panel-right) - 96px) !important;
+    left: calc(var(--panel-right) + 20px) !important;
+  }
+  .earth-app:has(.cs-panel) { --panel-right: calc(var(--lane) + min(560px, 100vw - 130px)); }
+  .earth-app:has(.ai-panel) { --panel-right: calc(var(--lane) + min(460px, 100vw - 130px)); }
+  .earth-app:has(.fc-panel) { --panel-right: calc(var(--lane) + min(500px, 100vw - 130px)); }
+  .has-analysis .target-dock {
+    left: calc((100% - 390px - var(--edge)) / 2) !important;
+  }
+
+  /* hero and ribbon align to the same margin */
+  .hero {
+    left: calc(var(--edge) + 16px);
+  }
+}
+/* Narrow desktops: the wordmark yields so the search never touches the tool buttons. */
+@media (min-width: 761px) and (max-width: 1060px) {
+  .earth-identity > span.brand-text {
+    display: none !important;
+  }
+  .earth-identity {
+    padding: 5px !important;
+  }
+  .earth-navigation .command-search {
+    width: clamp(220px, 28vw, 360px);
+  }
+}
+/* Too narrow for the card beside a left panel: the panel header already names the place. */
+@media (min-width: 761px) and (max-width: 1299px) {
+  .earth-app:has(.cs-panel) .target-dock,
+  .earth-app:has(.ai-panel) .target-dock {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@media (min-width: 761px) {
+  /* the investigation drawer owns the right lane: controls step left of it */
+  .has-analysis .globe-controls {
+    right: calc(390px + var(--edge) + 14px) !important;
+  }
+  /* floating right panels end above the bottom-right controls */
+  .tm-panel,
+  .swipe-panel,
+  .pc-card {
+    max-height: calc(100dvh - var(--top) - 190px) !important;
+    overflow-y: auto;
+  }
+}
+/* Phone tool rows: explicit lanes so no two buttons touch.
+   row 1: Questions · Trends · (2D · Views on the right)   row 2: AI · Forecast · Studio */
+@media (max-width: 760px) {
+  .questions-launcher,
+  .trends-launcher,
+  .ai-launcher,
+  .studio-launcher,
+  .view-navigation > button.fc-nav {
+    height: 36px !important;
+    padding: 4px 9px 4px 4px !important;
+    gap: 6px !important;
+    font-size: 11.5px !important;
+  }
+  .questions-launcher svg,
+  .trends-launcher svg,
+  .ai-launcher svg,
+  .studio-launcher svg {
+    width: 14px;
+    height: 14px;
+    padding: 5px !important;
+  }
+  .questions-launcher { left: 16px !important; top: 78px !important; }
+  .trends-launcher { left: 120px !important; top: 78px !important; }
+  .ai-launcher { left: 16px !important; top: 122px !important; }
+  .view-navigation > button.fc-nav { left: 78px !important; top: 122px !important; }
+  .studio-launcher { left: 180px !important; top: 122px !important; }
+}
+/* After the tour has been taken: the top-bar button becomes a plain replay control, no longer a call to action. */
+.view-navigation > button.tour-nav.done {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--ink-2) !important;
+}
+.hero-actions button.replay {
+  height: 44px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.hero-actions button.replay svg {
+  color: var(--c-tour);
+}

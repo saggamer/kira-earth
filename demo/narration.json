@@ -1,0 +1,14 @@
+[
+  {"id": "hero", "min": 5.0, "text": "Every NASA dataset records change. Trend Detective finds what is changing on Earth, where, how much, and whether it is real."},
+  {"id": "challenge", "min": 4.0, "text": "This is the guided tour. Everything you will see is computed live from NASA records."},
+  {"id": "studio", "min": 6.0, "text": "Take Cairo. The Change Studio tests eight NASA POWER climate variables and a drought index with one method, and ranks them. Night-time temperature is changing most, rising about zero point four degrees per decade."},
+  {"id": "seasons", "min": 5.0, "text": "The seasonal fingerprint shows when in the year it is changing. Dots mark months that survive false discovery rate control."},
+  {"id": "spiral", "min": 14.0, "text": "This climate spiral replays forty-five years of monthly anomalies. As the loops drift outward, from blue to orange, Cairo's nights are getting warmer."},
+  {"id": "significance", "min": 5.0, "text": "Is it real? We shuffled the years two thousand times. Not one shuffle looked as trended as the real record, and it passes the autocorrelation and multiple-testing checks."},
+  {"id": "satellite", "min": 6.0, "text": "It is not just one model. Twenty-five years of quality-screened NASA MODIS satellite data, from Microsoft's Planetary Computer, independently confirm the night-time warming."},
+  {"id": "trendmap", "min": 6.0, "text": "Where is it changing? The trend map repeats the test on every grid cell around Cairo. Every cell is warming, and more than half are significant after field-wide correction."},
+  {"id": "aral", "min": 10.0, "text": "Some change is visible from space. Swipe between NASA MODIS images of the Aral Sea, in two thousand and in twenty twenty-four."},
+  {"id": "landcover", "min": 6.0, "text": "At ten metre resolution, land-cover maps show Egypt's New Administrative Capital rising from the desert east of Cairo."},
+  {"id": "ai", "min": 6.0, "text": "Finally, analog intelligence compares today's trends with past episodes on the same tectonic plates, and only shows forecasts whose skill was verified at unseen sites."},
+  {"id": "end", "min": 4.0, "text": "Search any place on Earth and start investigating. Trend Detective. Find what is changing, and prove it."}
+]

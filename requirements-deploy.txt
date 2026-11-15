@@ -1,0 +1,14 @@
+# Runtime dependencies for the hosted app (no PyTorch / transformers: the Laya resemblance model and the
+# small local LLM are optional and the app falls back gracefully without them).
+fastapi>=0.115,<1
+uvicorn[standard]>=0.34,<1
+httpx>=0.28,<1
+numpy>=2.2,<3
+pandas>=2.2,<4
+scipy>=1.15,<2
+ecmwf-opendata>=0.3.35,<1
+eccodes>=2.40,<3
+cfgrib>=0.9.15,<1
+xarray>=2025.1
+contourpy>=1.3,<2
+anthropic>=1,<2

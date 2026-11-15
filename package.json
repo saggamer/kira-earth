@@ -1,0 +1,47 @@
+{
+  "name": "earth-system-trend-detective",
+  "version": "1.0.0",
+  "description": "Earth System Trend Detective: find what is changing on Earth, where, how much, and whether it is significant (NASA Space Apps Challenge 2026)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test:science": "backend/.venv/bin/python -m pytest backend/tests -q",
+    "api": "backend/.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000",
+    "test:coordinates": "node --test tests/coordinates.test.ts",
+    "start": "node scripts/start.mjs",
+    "test:weather": "node --test tests/weather.test.ts",
+    "test:integrity": "node --test tests/integrity.test.ts",
+    "test:regions": "node --test tests/regions.test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.5.0",
+    "cesium": "^1.147.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.72.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.7.0",
+    "zustand": "^5.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "prettier": "^3.10.1",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vite-plugin-cesium": "^1.2.23"
+  },
+  "private": true,
+  "siDisclosure": "Code and documentation assisted by Anthropic Claude Code and OpenAI Codex; reviewed and tested by the team. The 30-second demo uses an AI-generated Kokoro-82M voice, disclosed on screen and in its metadata. Scientific statistics are computed from provider data. See AI_USE.md."
+}

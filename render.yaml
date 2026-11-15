@@ -1,0 +1,17 @@
+# Free single-container profile: serves the built frontend and FastAPI from one origin.
+# Laya weights / local Qwen are not included; see deploy/HACKATHON_DEPLOYMENT.md.
+services:
+  - type: web
+    name: kira-earth
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: "7860"
+      - key: EARTH_PUBLIC_MODE
+        value: "1"
+      - key: EARTH_CACHE_DIR
+        value: /tmp/earth-cache

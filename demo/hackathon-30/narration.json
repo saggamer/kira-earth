@@ -1,0 +1,38 @@
+[
+  {
+    "id": "hook",
+    "start": 0,
+    "duration": 4,
+    "text": "What is changing where you live?"
+  },
+  {
+    "id": "cairo",
+    "start": 4,
+    "duration": 5,
+    "text": "Kira Earth turns NASA records into evidence. Start with Cairo."
+  },
+  {
+    "id": "spiral",
+    "start": 9,
+    "duration": 5,
+    "text": "Rank eight climate variables, and replay decades of change."
+  },
+  {
+    "id": "evidence",
+    "start": 14,
+    "duration": 5,
+    "text": "Check statistical significance, then cross-check trends with satellite measurements."
+  },
+  {
+    "id": "aral",
+    "start": 19,
+    "duration": 6,
+    "text": "Swipe across time to see the Aral Sea change from space."
+  },
+  {
+    "id": "end",
+    "start": 25,
+    "duration": 5,
+    "text": "Kira Earth. See what's changing. AI-generated voice by Kokoro."
+  }
+]

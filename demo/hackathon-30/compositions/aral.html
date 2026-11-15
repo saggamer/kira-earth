@@ -1,0 +1,24 @@
+<template>
+<style>
+#root {position:absolute;inset:0;background:#07141f;font-family:Inter, sans-serif;overflow:hidden;}
+.footage {position:absolute;left:0;top:0;width:1920px;height:914px;object-fit:cover;}
+.caption {position:absolute;left:0;right:0;bottom:0;height:166px;background:#fff;color:#17212b;z-index:10;}
+.tab {position:absolute;left:0;top:0;width:20px;height:166px;background:#1594b8;}
+.headline {position:absolute;left:128px;top:21px;font-size:46px;font-weight:700;letter-spacing:-1.2px;line-height:1.15;}
+.detail {position:absolute;left:128px;top:91px;font-size:30px;font-weight:400;color:#47535e;}
+.disclosure {position:absolute;right:128px;top:30px;font-size:26px;font-weight:700;color:#47535e;}
+</style>
+<div id="root" data-composition-id="aral" data-width="1920" data-height="1080">
+<video id="aral-video" class="clip footage" src="assets/aral.mp4" muted playsinline data-start="0" data-duration="6" data-track-index="0"></video>
+<div id="aral-caption" class="clip caption" data-start="0" data-duration="6" data-track-index="2" data-track-kind="captions">
+<div class="caption-body"><div class="tab"></div><h2 class="headline">Change you can see</h2><p class="detail">Aral Sea · NASA MODIS imagery compared across two dates</p><span class="disclosure">AI-generated voiceover · Kokoro</span></div>
+</div>
+</div>
+<script>
+const tl=gsap.timeline({paused:true});
+// Adapted from registry lt-clean-bar: accent tab and clipped bar reveal.
+tl.fromTo('#aral-caption .tab',{scaleY:0,transformOrigin:'50% 0%'},{scaleY:1,duration:.4,ease:'power2.out'},0);
+tl.fromTo('#aral-caption .headline',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:.4,ease:'power3.out'},.05);
+window.__timelines['aral']=tl;
+</script>
+</template>
