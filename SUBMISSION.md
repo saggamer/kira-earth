@@ -1,7 +1,7 @@
 # Space Apps 2026 submission kit — Earth System Trend Detective
 
 Copy-ready text for the project submission form. Replace the two placeholders before submitting:
-`<LIVE_URL>` (your domain / hosted app) and `<DEMO_URL>` (public video link: YouTube, Drive, etc.).
+`<LIVE_URL>` (your domain / hosted app) and `https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1` (public video link: YouTube, Drive, etc.).
 
 ## Project name
 Earth System Trend Detective
@@ -11,8 +11,8 @@ Trend Detective is a globe-based tool that answers the four questions in the cha
 
 ## Links
 - Live app: `<LIVE_URL>`
-- Demo video (public, English subtitles): `<DEMO_URL>`
-- Source code: repository link (public)
+- Demo video (public, English subtitles): `https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1`
+- Source code: https://github.com/saggamer/kira-earth (public)
 
 ## Project details (long)
 **Problem.** Change in the Earth system shows up in many variables, sometimes in opposite directions in different regions, and there are too many variables to know where to look or how to tell real change from noise.
@@ -80,7 +80,7 @@ Select: **code and data**, **audio**, and (for the demo) **video — screen reco
 ## How the project meets the judging criteria
 - **Impact** — turns the challenge's four questions into a repeatable workflow for any coordinate on Earth; free, keyless core; explains uncertainty instead of overstating it.
 - **Creativity** — automatic variable screening ranked by standardized change; satellite-vs-model cross-check; climate spiral and stripes for any variable and place; then-and-now satellite and land-cover swipes; analog episodes scoped by tectonic plates.
-- **Validity** — Theil–Sen + Mann–Kendall with autocorrelation and record-length screens, FDR across variables and grid cells, permutation test, quality-screened and season-balanced satellite data, horizon-purged forecast evaluation (enforced in code), 125 automated tests; limitations stated in the app and README.
+- **Validity** — Theil–Sen + Mann–Kendall with autocorrelation and record-length screens, FDR across variables and grid cells, permutation test, quality-screened and season-balanced satellite data, horizon-purged forecast evaluation (enforced in code), 126 automated tests; limitations stated in the app and README.
 - **Relevance** — uses NASA POWER, MODIS (LP DAAC products), GIBS imagery and FIRMS; follows the challenge reference's recommended layers (temperature, pressure, humidity, wind, precipitation, soil moisture, land surface temperature, NDVI, SPI, percentile baselines, trends).
 - **Presentation** — guided 11-step tour inside the app, a recorded demo with narration and English subtitles, a submission-ready README with method and source documentation.
 
@@ -88,7 +88,7 @@ Select: **code and data**, **audio**, and (for the demo) **video — screen reco
 Sea-surface temperature (marine heatwaves, ENSO), dew point and CAPE from the challenge reference are not yet included; the hosted version runs without the optional Laya model (the AI layer falls back to rule-based gating).
 
 ## Before submitting — checklist
-- [ ] Live app reachable at `<LIVE_URL>`; demo video public at `<DEMO_URL>` with English subtitles
+- [ ] Live app reachable at `<LIVE_URL>`; demo video public at `https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1` with English subtitles
 - [ ] NASA Data and Other Data fields filled from the tables above
 - [ ] SI-use field filled; video shows the AI · SI notice
 - [ ] Terms and conditions agreed; originality confirmed (all external resources are listed above)

@@ -337,4 +337,6 @@ The repository builds as one container (`Dockerfile`): Node builds the frontend,
 
 ## Hackathon release
 
+[Download the 30-second narrated demo](https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1) · [Public source code](https://github.com/saggamer/kira-earth)
+
 The 30-second film, English subtitles and editable HyperFrames source are documented in [demo/hackathon-30/README.md](demo/hackathon-30/README.md). The voice is AI-generated using Kokoro-82M. Deployment choices and the hosted-mode limitations are in [deploy/HACKATHON_DEPLOYMENT.md](deploy/HACKATHON_DEPLOYMENT.md).

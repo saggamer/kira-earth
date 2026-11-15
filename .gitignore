@@ -24,3 +24,9 @@ demo/voice/
 demo/hackathon-30/output*.mp4
 demo/hackathon-30/kira-earth-hackathon-30s.mp4
 climatic_event_detection_trends.pdf
+
+# Generated video-editor caches and render transactions
+**/.thumbnails/
+**/.transcode-cache/
+**/.waveform-cache/
+**/.*.hf-transaction-*/
