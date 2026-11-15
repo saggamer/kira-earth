@@ -1,7 +1,6 @@
 # Space Apps 2026 submission kit — Earth System Trend Detective
 
-Copy-ready text for the project submission form. Replace the two placeholders before submitting:
-`<LIVE_URL>` (your domain / hosted app) and `https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1` (public video link: YouTube, Drive, etc.).
+Copy-ready text for the project submission form. The public app and demo links below are published. Review the scientific limitations and complete the final checklist before submitting.
 
 ## Project name
 Earth System Trend Detective
@@ -10,7 +9,7 @@ Earth System Trend Detective
 Trend Detective is a globe-based tool that answers the four questions in the challenge for any place on Earth: **what** is changing, **where**, **how much**, and whether the change is **significant**. It tests eight NASA POWER climate variables, a standard drought index and 25 years of NASA MODIS satellite observations with one transparent method (Theil–Sen slope, Mann–Kendall test, autocorrelation screening, false-discovery-rate control and a permutation test), ranks what is changing, maps where it changes across grid cells, cross-checks model trends against independent satellite measurements, and shows change from space with then-and-now satellite comparisons.
 
 ## Links
-- Live app: `<LIVE_URL>`
+- Live app: `https://kira-earth.onrender.com`
 - Demo video (public, English subtitles): `https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1`
 - Source code: https://github.com/saggamer/kira-earth (public)
 
@@ -88,7 +87,7 @@ Select: **code and data**, **audio**, and (for the demo) **video — screen reco
 Sea-surface temperature (marine heatwaves, ENSO), dew point and CAPE from the challenge reference are not yet included; the hosted version runs without the optional Laya model (the AI layer falls back to rule-based gating).
 
 ## Before submitting — checklist
-- [ ] Live app reachable at `<LIVE_URL>`; demo video public at `https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1` with English subtitles
+- [x] Live app reachable at `https://kira-earth.onrender.com`; demo video public at `https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1` with English subtitles
 - [ ] NASA Data and Other Data fields filled from the tables above
 - [ ] SI-use field filled; video shows the AI · SI notice
 - [ ] Terms and conditions agreed; originality confirmed (all external resources are listed above)

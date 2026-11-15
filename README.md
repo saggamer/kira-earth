@@ -1,5 +1,8 @@
 # Earth System Trend Detective
 
+**KIRA Earth** · [Live app](https://kira-earth.onrender.com) · [30-second narrated demo](https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1) · [AI disclosure](AI_USE.md) · [Submission kit](SUBMISSION.md)
+
+
 A standalone NASA Space Apps project for investigating environmental change. The opening view is a full-screen Cesium Earth with location search and navigation. Science appears progressively, only when requested.
 
 ## How it answers the challenge
@@ -336,6 +339,8 @@ The repository builds as one container (`Dockerfile`): Node builds the frontend,
 `demo/` holds the recorder and voiceover pipeline: `narration.json` (one line per tour step), `voiceover.py tts` (ElevenLabs, key from `ELEVENLABS_API_KEY` or `backend/.secrets/elevenlabs.key`; `--say` gives an offline placeholder), `record-tour.mjs --voice … --narration …` (holds each step until its narration ends and logs step times), and `voiceover.py mix` (places each line at its step, adds an English subtitle track and `.srt`).
 
 ## Hackathon release
+
+The public Render demo uses a lightweight CPU profile: the scientific calculations and saved logistic model are available, while the optional Laya resemblance weights are not installed. Free instances can sleep and take 50 seconds or more to wake. [Deployment and verification notes](deploy/HACKATHON_DEPLOYMENT.md).
 
 [Download the 30-second narrated demo](https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1) · [Public source code](https://github.com/saggamer/kira-earth)
 

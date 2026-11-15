@@ -6,7 +6,7 @@
 2. Deploy the existing single-container Dockerfile. It builds the frontend and serves it with FastAPI, so no separate frontend rewrite is needed.
 3. Verify Cairo Studio, the forecast and Compare on the deployed URL. Connect a domain only after this passes.
 
-## Ready-to-deploy free profile
+## Free profile
 
 `render.yaml` describes a **free** Render web service. Import this repository as a Blueprint: https://dashboard.render.com/select-repo?type=blueprint . This requires a Render account and authorization to read this public repo. The first build must finish before any live URL is claimed. The Blueprint explicitly uses `plan: free`; no paid hardware is selected. Free instances can sleep and cold-start, and their local cache is ephemeral.
 
@@ -38,3 +38,15 @@ For a host that runs Laya, include the base tokenizer/config files and base weig
 ## Domain
 
 A custom domain is optional for judging: the host's HTTPS URL is enough. The user has discussed several domain names but has not selected a confirmed purchase for this deployment. Do not buy a domain without a specific name and approved price.
+
+## Actual deployment
+
+- Public app and API: https://kira-earth.onrender.com
+- Host: Render, service `kira-earth`, Free compute, Ohio (US East), 0.1 CPU / 512 MB RAM.
+- Service ID: `srv-dbsv37jm8hqs73drt09g`; first deployment `dep-dbsv383m8hqs73drt0r0`.
+- Deployed source commit: `1313d2d794011e48a52747da2618bbdde514303e`; first build and startup succeeded in 1 min 15 s.
+- Health check: `/api/health`, HTTP 200. Public key-management guard: HTTP 403 even with the normal client header.
+- The public GitHub repository is https://github.com/saggamer/kira-earth; the demo release is https://github.com/saggamer/kira-earth/releases/tag/hackathon-demo-v1 .
+- Live browser verification: Cairo Studio returns its 1981–2025 record and NASA provenance; the forecast panel returns WeatherNext 2 ensemble data, current fields and future daily dates. Regional Compare also completed for Cairo and Nairobi (2001–2024), with nine grid samples per region; both series had full daily coverage. The cross-region response was correctly withheld for insufficient held-out skill.
+- Safari private-window verification was blocked by Screen Time settings; no settings were changed. The user confirmed that the globe and Explore Cairo load correctly on their phone; this is user-reported phone verification, not a device test performed by the assistant.
+- No custom domain was purchased or attached; the Render HTTPS URL is ready for use.
